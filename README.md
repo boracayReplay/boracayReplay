@@ -6,3 +6,6 @@
 Infra & DB : Firebase
 
 WebServer :Node.js & Express
+
+#Todo
+git 배우기
