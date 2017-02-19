@@ -1,13 +1,14 @@
 .logo-container{
   display:block;
+  height:20%;
 }
 
 .logo-title{
-  font-family:"";
+  font-family: 'Open Sans', sans-serif;
   font-weight:bold;
   font-size:20px;
   text-align: center;
-  padding-top:30%;
+  padding-top:20px;
 }
 
 .nav-footer-banner{
@@ -16,8 +17,15 @@
   height:20%;
   display:block;
   background-color:green;
+  text-align:center;
+  padding-top:30%;
+  font-size:20px;
 }
 
-.footer-container{
-  margin-left:20%;
+main {
+  margin-left:30%;
+}
+
+.footer-font {
+  margin:auto auto;
 }
