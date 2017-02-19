@@ -21699,13 +21699,13 @@ function HelloWorld(props) {
   return _react2.default.createElement(
     'h1',
     { 'class': 'header center orange-text' },
-    'Hello ',
+    ' Hello ',
     props.name,
     '!'
   );
 }
 
-(0, _reactDom.render)(_react2.default.createElement(HelloWorld, { name: 'World' }), document.getElementById('root'));
+(0, _reactDom.render)(_react2.default.createElement(HelloWorld, { name: 'Junho' }), document.getElementById('root'));
 
 /***/ })
 /******/ ]);
