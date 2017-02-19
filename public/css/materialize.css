@@ -5507,10 +5507,10 @@ button.btn-floating {
 }
 
 .collapsible-body {
-  display: none;
+  display:none;
   border-bottom: 1px solid #ddd;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: 0;
 }
 
 .side-nav .collapsible,
@@ -5551,7 +5551,7 @@ button.btn-floating {
 
 .side-nav .collapsible-body li a,
 .side-nav.fixed .collapsible-body li a {
-  padding: 0 23.5px 0 31px;
+  padding: 0 23.5px 0 90px;
 }
 
 .collapsible.popout {

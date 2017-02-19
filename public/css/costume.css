@@ -1,17 +1,13 @@
 .logo-container{
-  margin:5% 5%;
-  width:90%;
-  height:30%;
   display:block;
-  background-color:lightblue;
 }
 
 .logo-title{
-  font-family:"Roboto";
+  font-family:"";
   font-weight:bold;
-  font-size:30px;
+  font-size:20px;
   text-align: center;
-  padding-top:40%;
+  padding-top:30%;
 }
 
 .nav-footer-banner{
@@ -20,4 +16,8 @@
   height:20%;
   display:block;
   background-color:green;
+}
+
+.footer-container{
+  margin-left:20%;
 }
