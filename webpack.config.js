@@ -1,12 +1,25 @@
+var webpack = require('webpack');
 
 module.exports = {
-  entry: './src/HelloWorld.js',
+  entry: './src/index.js',
 
   output: {
     path: __dirname +'/public',
     filename: 'bundle.js'
   },
-
+  devServer: {
+    hot: true,
+    filename: 'bundle.js',
+    publicPath: '/',
+    historyApiFallback: true,
+    contentBase: './public',
+    proxy: {
+      "**": "http://localhost:3000"
+    }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
   module: {
     loaders: [
       {
@@ -19,5 +32,5 @@ module.exports = {
         exclude: /node_modules/,
       }
     ]
-  }
+  },
 };

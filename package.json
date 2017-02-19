@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --hot --host 0.0.0.0",
+    "start": "rm public/bundle.js; webpack; firebase serve;",
+    "firebase serve": "firebase serve",
+    "dev-server" : "webpack-dev-server --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
