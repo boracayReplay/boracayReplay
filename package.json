@@ -6,7 +6,7 @@
   "scripts": {
     "start": "rm public/bundle.js; webpack; firebase serve;",
     "firebase serve": "firebase serve",
-    "dev-server" : "webpack-dev-server --hot --inline",
+    "dev-server": "webpack-dev-server --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -20,6 +20,7 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "firebase": "^3.6.8",
+    "firebase-admin": "^4.1.1",
     "path": "^0.12.7",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
