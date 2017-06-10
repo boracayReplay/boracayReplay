@@ -5,7 +5,7 @@
 
 Infra & DB : Firebase
 
-WebServer :Node.js & Express
+Webpage : webpack & bootstrap3 
 
 #Todo
 git 배우기
