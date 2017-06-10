@@ -1,39 +1,37 @@
-/**
- * Created by free-lunch on 2017. 2. 19..
- */
-/**
- * Created by free-lunch on 2017. 2. 4..
- */
-
 var firebase = require('firebase');
 
 var config = {
-  serviceAccount: "./serviceAccount.json",
+  apiKey: "AIzaSyALHtOYNaeVpKVYmi0VJR0OrQn85e81VY8",
   databaseURL: "https://boracay-eddc8.firebaseio.com",
+  projectId: "boracay-eddc8",
 };
 
 var app = firebase.initializeApp(config);
 
-function insertItem(data) {
-  var newPostKey = firebase.database().ref().child('items').push().key;
+//const preObject = document.getElementById('item');
+//const ullist = document.getElementById('list');
 
-  firebase.database().ref('items/' + newPostKey).set(data, function () {
-    console.log('on complete');
-    app.delete();
-  });
+const dbRefObject = firebase.database().ref().child('broad-real');
+const dbRefList = dbRefObject.child('KBS');
 
-}
+var preObject = 0;
 
-var data = {
-  "title": "가족끼리 왜 이래 - 신년특집 2015 가족백서 1/1",
-  "created_at" : firebase.database.ServerValue.TIMESTAMP,
-  "view_count" : 0,
-  "links" : {
-    "dailymotion" : "http://www.dailymotion.com/embed/video/k7sqolCvrPLkXQ9KVKq?syndication=212325&"
-  }
+var getItem = function(){
+ dbRefObject.on('value', snap => {
+     preObject = JSON.stringify(snap.val(),null, 3);
+ })
 };
 
-insertItem(data)
+getItem();
 
-
-
+console.log(preObject);
+/*
+ dbRefList.on('child_added', snap => {
+   const fourthText = document.createTextNode(snap.key);
+   const li = document.createElement('li');
+   const alist = document.createElement('a');
+   ullist.appendChild(li).appendChild(alist).appendChild(fourthText);
+   alist.id = snap.key;
+   alist.href = snap.val()}
+ }
+*/
