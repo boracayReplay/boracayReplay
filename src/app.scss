@@ -1,6 +1,10 @@
+@import './bootstrap/customizations.scss';
+
+html, body {
+  background-color: skyblue;
+}
 body{
-  background-color : skyblue ;
   p {
-    color : white;
+    color : $brand-success;
   }
 }
