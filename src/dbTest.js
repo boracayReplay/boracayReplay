@@ -11,9 +11,11 @@ const config = {
 
 firebase.initializeApp(config);
 
-const broadReal = firebase.database().ref().child('broad-real');
+const getFbDb = firebase.database().ref().child('broad-real').once('value').then(function(snapshot) {
+    var username = snapshot.val();
+    console.log(username['KBS']['KBS1']['myK']);
+  }).catch(e =>{
+  console.log(e);
+});
 
-broadReal.on('value', snap => (
-   console.log(snap.val())));
-
-export const person = 5;
+//console.log(fbData);
