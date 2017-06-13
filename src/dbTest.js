@@ -10,12 +10,21 @@ const config = {
 };
 
 firebase.initializeApp(config);
+var conn = firebase.database().ref()
 
-const getFbDb = firebase.database().ref().child('broad-real').once('value').then(function(snapshot) {
-    var username = snapshot.val();
-    console.log(username['KBS']['KBS1']['myK']);
-  }).catch(e =>{
-  console.log(e);
-});
+export function getItem(key) {
+  return conn.child('test').once('value').then(function(snapshot) {
+    return snapshot.val();
+  });
+}
+
+
+// const getFbDb = conn.child('broad-real').once('value').then(function(snapshot) {
+//     var username = snapshot.val();
+//     console.log();
+//   }).catch(e =>{
+//   console.log(e);
+// });
+//export getItem;
 
 //console.log(fbData);
