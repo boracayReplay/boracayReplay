@@ -67,8 +67,14 @@ render() {
           {
           this.state.items.map((item) => {
             return (
-              <div key={item.id}
-                <div> <a href={item.user} target="_blank">{item.title}</a></div>
+              <div key={item.id} className="col-md-3 col-sm-6 hero-feature">
+                <div className="thumbnail">
+                       <img src="http://placehold.it/800x500" alt=""/>
+                       <div className="caption">
+                        <p> {item.title} </p>
+                        <a href="#" className="btn btn-primary">Buy Now!</a> <a href={item.user} className="btn btn-default">More Info</a>
+                       </div>
+                   </div>
               </div>
             )
           })
