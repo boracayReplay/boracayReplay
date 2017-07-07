@@ -16,7 +16,6 @@ const cssProd = ExtractTextPlugin.extract({
 const cssConfig = isProd ? cssProd : cssDev;
 const bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
 
-
 module.exports = {
   entry: {
     app: './src/index.js',

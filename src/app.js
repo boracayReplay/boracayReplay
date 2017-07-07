@@ -3,7 +3,6 @@ import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
 import css from './app.scss';
 import firebase from 'firebase';
-//import {getItem} from './dbTest';
 
 const config = {
     apiKey: "AIzaSyALHtOYNaeVpKVYmi0VJR0OrQn85e81VY8",
