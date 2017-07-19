@@ -26,25 +26,32 @@ class App extends Component{
   this.handleChange = this.handleChange.bind(this);
   this.handleSubmit = this.handleSubmit.bind(this);
 }
+
 handleChange(e) {
   this.setState({
     [e.target.name]: e.target.value
   });
 }
+
 handleSubmit(e) {
 e.preventDefault();
   const itemsRef = firebase.database().ref('items');
   const item = {
     title: this.state.currentItem
-}
+    }
+
   itemsRef.push(item);
   this.setState({
     currentItem: '',
     username: ''
   });
 }
+
 componentDidMount() {
-  const itemsRef = firebase.database().ref('items');
+  const realRef = firebase.database().ref('broad-real');
+  console.log(realRef);
+  const adaRef = usersRef.child('ada');
+
   itemsRef.on('value', (snapshot) => {
     let items = snapshot.val();
     let newState = []
@@ -55,18 +62,20 @@ componentDidMount() {
         user:items[item].user
       });
     }
+    //실제 그리는 영역
     this.setState({
       items: newState
     });
   });
 }
 render() {
+
   return (
       <div>
           {
           this.state.items.map((item) => {
             return (
-              <div key={item.id} className="col-md-3 col-sm-6 hero-feature">
+              <div key={item.id}   className="col-md-3 col-sm-6 hero-feature">
                 <div className="thumbnail">
                        <img src="http://placehold.it/800x500" alt=""/>
                        <div className="caption">

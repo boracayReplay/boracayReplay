@@ -52,6 +52,7 @@ module.exports = {
     contentBase:path.join(__dirname,"public"),
     compress:true,
     stats:"errors-only",
+    inline:true,
     hot:true,
     open:true
   },
@@ -73,8 +74,6 @@ module.exports = {
     new webpack.NamedModulesPlugin(),
     new PurifyCSSPlugin({
       paths:glob.sync(path.join(__dirname,'src/*.html')),
-
     })
-
   ]
 }
