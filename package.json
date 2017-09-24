@@ -20,6 +20,7 @@
     "express": "^4.15.3",
     "firebase": "^3.6.8",
     "firebase-admin": "^4.2.1",
+    "package.json": "^2.0.1",
     "path": "^0.12.7"
   },
   "devDependencies": {

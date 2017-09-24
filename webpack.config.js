@@ -54,7 +54,8 @@ module.exports = {
     stats:"errors-only",
     inline:true,
     hot:true,
-    open:true
+    open:true,
+    openPage: ''
   },
   plugins:[
     new HtmlWebpackPlugin({

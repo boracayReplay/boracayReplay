@@ -5,7 +5,7 @@ import css from './app.scss';
 import firebase from 'firebase';
 
 const config = {
-    apiKey: "AIzaSyALHtOYNaeVpKVYmi0VJR0OrQn85e81VY8",
+      apiKey: "AIzaSyALHtOYNaeVpKVYmi0VJR0OrQn85e81VY8",
     authDomain: "boracay-eddc8.firebaseapp.com",
     databaseURL: "https://boracay-eddc8.firebaseio.com",
     projectId: "boracay-eddc8",
@@ -15,80 +15,51 @@ const config = {
 
 firebase.initializeApp(config);
 
-class App extends Component{
+export class App extends Component{
   constructor() {
-  super();
-  this.state = {
-    currentItem: '',
-    username: '',
-    items: []
+    super();
+    this.state={
+      items:[{
+        "name":'villy',
+        'age':"string"
+      }]
+    }
   }
-  this.handleChange = this.handleChange.bind(this);
-  this.handleSubmit = this.handleSubmit.bind(this);
-}
+  componentWillMount(){
+  };
 
-handleChange(e) {
-  this.setState({
-    [e.target.name]: e.target.value
-  });
-}
+  componentDidMount(){
+    let regularStation = firebase.database().ref('broad-real/regular');
 
-handleSubmit(e) {
-e.preventDefault();
-  const itemsRef = firebase.database().ref('items');
-  const item = {
-    title: this.state.currentItem
-    }
-
-  itemsRef.push(item);
-  this.setState({
-    currentItem: '',
-    username: ''
-  });
-}
-
-componentDidMount() {
-  const realRef = firebase.database().ref('broad-real');
-  console.log(realRef);
-  const adaRef = usersRef.child('ada');
-
-  itemsRef.on('value', (snapshot) => {
-    let items = snapshot.val();
-    let newState = []
-    for (let item in items) {
-      newState.push({
-        id: item,
-        title: items[item].title,
-        user:items[item].user
-      });
-    }
-    //실제 그리는 영역
-    this.setState({
-      items: newState
+    regularStation.on('value',(snapshot) => {
+        let stationData = snapshot.val();
+        let stationKeys = Object.keys(stationData);
+        let newState = [];
+        // for(let item in stationData){
+        //   newState.push({
+        //     item:stationData[item]
+        //   });
+        // }
+        this.setState({
+          items:[{
+          key1:'value1', key2:'value2'
+          },{
+          key1:'value3', key2:'value4'
+          }]
+        });
     });
-  });
-}
-render() {
+  }
 
-  return (
-      <div>
-          {
-          this.state.items.map((item) => {
-            return (
-              <div key={item.id}   className="col-md-3 col-sm-6 hero-feature">
-                <div className="thumbnail">
-                       <img src="http://placehold.it/800x500" alt=""/>
-                       <div className="caption">
-                        <p> {item.title} </p>
-                        <a href="#" className="btn btn-primary">Buy Now!</a> <a href={item.user} className="btn btn-default">More Info</a>
-                       </div>
-                   </div>
-              </div>
-            )
-          })
-        }
+  render(){
+    return (
+      <div> {this.state.items.map((item, i) => {
+        return (
+          <div>
+            <div key={i}> {item.key1}, {item.key2} </div>
+          </div>
+        );
+      })}
       </div>
-  )}
+    );
+  }
 }
-
-export default App;
