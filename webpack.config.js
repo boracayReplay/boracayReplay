@@ -9,8 +9,8 @@ const PurifyCSSPlugin = require("purifycss-webpack");
 const isProd = process.env.NODE_ENV === 'production';
 const cssDev = ['style-loader','css-loader','sass-loader']
 const cssProd = ExtractTextPlugin.extract({
-    fallbackLoader:'style-loader',
-    loader:['css-loader','sass-loader'],
+    fallback:'style-loader',
+    use:['css-loader','sass-loader'],
     publicPath:'public'
 });
 const cssConfig = isProd ? cssProd : cssDev;

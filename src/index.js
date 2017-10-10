@@ -1,8 +1,9 @@
 import {App} from './app'
+import {Navmenu} from './component/Navmenu'
 import React from 'react';
-import ReactDom from 'react-dom';
+import ReactDOM from 'react-dom';
 
-ReactDom.render(
-    <App />,
-    document.getElementById('app')
+ReactDOM.render(
+    <App/>,
+    document.getElementById('myhead')
 );
