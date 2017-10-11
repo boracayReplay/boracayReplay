@@ -2,12 +2,6 @@ import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
 import {NavBar, Nav, NavItem} from 'react-bootstrap';
 
-class Contents1 extends React.Component {
-  render(){
-    return <div> Contents1 </div>;
-  }
-}
-
 class Contents2 extends React.Component {
   render(){
     return <div> Contents2 </div>;
@@ -38,13 +32,11 @@ class Navmenu extends React.Component {
       <Nav className="nav navbar-nav flex-item hidden-xs">
         <NavItem onClick={ () => this.onClickButton(true)}>  Menu1 </NavItem>
         <NavItem onClick={ () => this.onClickButton(false)}>  Menu2 </NavItem>
-        <div> {this.state.isToggleOn ? <Contents1/> : <Contents2/> } </div>
       </Nav>
     );
   }
 }
 
 ReactDOM.render(
-  <Navmenu/>,
-  document.getElementById('navmenu')
+  <Navmenu/>, document.getElementById('navmenu')
 );

@@ -3,6 +3,11 @@
 body{
   color:black;
 }
+
+#myhead{
+  margin:30% 20%;
+}
+
 /*scroll effect*/
 .navbar-trans {
   background-color: transparent;
@@ -40,7 +45,8 @@ body{
 }
 .navbar-doublerow .navbar-down ul>li>a{
 	font-size: 16px;
-	color: #fff;
+  color:black;
+	//color: #fff;
 	transition: border-bottom .2s ease-in , transform .2s ease-in-out;
 }
 .navbar-doublerow .navbar-down ul>li>a:hover{
