@@ -3,12 +3,14 @@ import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
 import css from './app.scss';
 import firebase from 'firebase';
+// import {ContentsBody} from './component/contentsBody'
+import {HeadBar} from './component/headBar'
 
 export class App extends React.Component {
   constructor(){
     super();
   }
-
+  
   componentWillMount(){
   }
 
@@ -17,7 +19,9 @@ export class App extends React.Component {
 
   render(){
     return (
-      <div> Hello </div>
+      <div>
+        <HeadBar/>
+      </div>
     );
   }
 }
