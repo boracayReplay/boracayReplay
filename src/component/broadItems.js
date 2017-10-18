@@ -3,45 +3,32 @@ import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import _ from 'lodash';
 
+
 export class Broaditems extends Component{
   constructor() {
     super();
+
+    this.pageSize = 10;
+
     this.state={
+      currentPage:1,
     }
   }
   componentWillMount(){
   };
 
   componentDidMount(){
-    let items = firebase.database().ref('broad-real/broad-items');
+    // broad-real/regular'
 
-        items.on('value',(snapshot) => {
+    let items = firebase.database().ref('broad-items/enter').orderByChild('created_date').limitToFirst(10);
+    // let items = firebase.database().ref('broad-items/enter').orderByChild('created_date').limitToFirst(10);
+    items.on('value',(snapshot) => {
+      console.log(snapshot.val());
+    });
 
-        this.setState({
-        })
 
-        // for(let item in stationData){
-        //
-        //   // let value = Object.keys(stationData[item])
-        // }
-          // console.log(value)
-          // current.push({
-          //   [value]:stationData[item][value]
-          // })
-
-        // }
-        // for(let item in stationData){
-        //   for (let sotitle in stationData[item]){
-        //     newState.push(
-        //       //{[sotitle]:stationData[item][sotitle]}
-        //       stationData[item]
-        //     );
-        //   }
-        // }
-
-      });
   }
-  // [{staitontype:방송국, name:방송국 소제목, link:방송주소, thumb_image:imgae_url},{staitontype:방송국, name:방송국 소제목, link:방송주소, thumb_image:imgae_url}]
+
 
   render(){
     return (
