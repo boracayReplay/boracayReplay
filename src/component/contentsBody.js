@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Onair} from './onair';
+import {Onair} from './onAir';
+import {Broaditems} from './broadItems';
 
 export class ContentsBody extends React.Component {
   constructor(){
@@ -18,6 +19,6 @@ function getContent(type) {
   if (type === "onair") {
     return <Onair/>;
   } else {
-    return <div> 아직 없어 </div>;
+    return <Broaditems/>;
   }
 }
