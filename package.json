@@ -20,7 +20,6 @@
     "express": "^4.16.1",
     "firebase": "^3.9.0",
     "firebase-admin": "^4.2.1",
-    "firebase-paginator": "^1.1.1",
     "lodash": "^4.17.4",
     "package.json": "^2.0.1",
     "path": "^0.12.7",
