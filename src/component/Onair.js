@@ -2,6 +2,7 @@ import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import _ from 'lodash';
+import {Grid, Row, Col} from 'react-bootstrap';
 
 export class Onair extends Component{
   constructor() {
@@ -64,23 +65,23 @@ export class Onair extends Component{
         //     }
         //   }
         // }
-        <div>
-          <div className="kbs">
+        <Grid className="onairitems">
+          <Row className="kbs">
             {this.state.currentKBS.map((smallBroadcast, i ) => {
-              return (<div key={i}> <a href={smallBroadcast.link} target="_blank"> {smallBroadcast.name} </a> </div>);
+              return (<Col xs={6} md={4} key={i}> <a href={smallBroadcast.link} target="_blank"> {smallBroadcast.name} </a> </Col>);
             })}
-          </div>
-          <div className="mbc">
+          </Row>
+          <Row className="mbc">
             {this.state.currentMBC.map((smallBroadcast, i ) => {
-              return (<div key={i}> <a href={smallBroadcast.link} target="_blank"> {smallBroadcast.name} </a> </div>);
+              return (<Col xs={6} md={4} key={i}> <a href={smallBroadcast.link} target="_blank"> {smallBroadcast.name} </a> </Col>);
             })}
-          </div>
-          <div className="sbs">
+          </Row>
+          <Row className="sbs">
             {this.state.currentSBS.map((smallBroadcast, i ) => {
-              return (<div key={i}> <a href={smallBroadcast.link} target="_blank"> {smallBroadcast.name} </a> </div>);
+              return (<Col xs={6} md={4} key={i}> <a href={smallBroadcast.link} target="_blank"> {smallBroadcast.name} </a> </Col>);
             })}
-          </div>
-        </div>
+          </Row>
+        </Grid>
         // <div className="kbs">
         //   {this.state.currentKBS.map((smallBroadcast, i ) => {
         //     return (<div key={i}> <a href={smallBroadcast.link} target="_blank"> {smallBroadcast.name} </a> </div>);
@@ -90,5 +91,4 @@ export class Onair extends Component{
         // </div>
     )
   }
-  // }
 }

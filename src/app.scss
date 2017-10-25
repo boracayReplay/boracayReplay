@@ -1,19 +1,16 @@
+
 @import './bootstrap/customizations.scss';
 
 body{
 
   #myhead{
     margin:30% 20%;
-    .kbs {
-
-      div {
-        padding:100px, 100px;
-      }
-
-   }
-
   }
 
+  a:link {
+    text-decoration: none;
+    color: black;
+  }
   /*scroll effect*/
   .navbar-trans {
     background-color: transparent;

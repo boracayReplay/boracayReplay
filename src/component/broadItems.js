@@ -21,7 +21,6 @@ export class Broaditems extends Component{
     // broad-real/regular'
 
     let items = firebase.database().ref('broad-items/enter').orderByChild('created_date').limitToFirst(10);
-    // let items = firebase.database().ref('broad-items/enter').orderByChild('created_date').limitToFirst(10);
     items.on('value',(snapshot) => {
       console.log(snapshot.val());
     });

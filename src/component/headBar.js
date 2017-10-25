@@ -47,8 +47,8 @@ export class HeadBar extends React.Component {
                   <div className="navbar-brand" onClick={()=> window.location.reload()}>Boracay</div>
                 </div>
                 <Nav className="nav navbar-nav flex-item hidden-xs">
-                  <NavItem onClick={ ()=> this.onClickButton("onair")}> Menu1 </NavItem>
-                  <NavItem onClick={ ()=> this.onClickButton("false")}> Menu2 </NavItem>
+                  <NavItem onClick={ ()=> this.onClickButton("onair")}> 실시간 보기 </NavItem>
+                  <NavItem onClick={ ()=> this.onClickButton("false")}> 지난 방송 보기 </NavItem>
                 </Nav>
                 <ul className="nav navbar-nav flex-item hidden-xs pull-right">
                   <li><a href="#" className="">offer!</a></li>
@@ -58,8 +58,8 @@ export class HeadBar extends React.Component {
                     <span className="glyphicon glyphicon-align-justify"></span>
                   </button>
                   <ul className="dropdown-menu">
-                    <NavItem onClick={ ()=> this.onClickButton("onair")}> Menu1 </NavItem>
-                    <NavItem onClick={ ()=> this.onClickButton("false")}> Menu2 </NavItem>
+                      <NavItem onClick={ ()=> this.onClickButton("onair")}> 실시간 보기 </NavItem>
+                      <NavItem onClick={ ()=> this.onClickButton("false")}> 지난 방송 보기 </NavItem>
                     <li role="separator" className="divider"></li>
                     <li><a href="#">contact us</a></li>
                   </ul>

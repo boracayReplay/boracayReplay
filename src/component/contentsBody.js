@@ -17,8 +17,8 @@ export class ContentsBody extends React.Component {
 
 function getContent(type) {
   if (type === "onair") {
-    return <Broaditems/>;
-  } else {
     return <Onair/>;
+  } else {
+    return <Broaditems/>;
   }
 }
