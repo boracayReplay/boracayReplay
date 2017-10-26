@@ -2,15 +2,23 @@
 @import './bootstrap/customizations.scss';
 
 body{
-
-  #myhead{
-    margin:30% 20%;
+  color:black;
+  
+  .navbar{
+    background-color: white;
   }
-
+  #myhead{
+    margin:20% 5%;
+  }
   a:link {
     text-decoration: none;
     color: black;
   }
+  a:visited {
+    text-decoration: none;
+    color: black;
+  }
+
   /*scroll effect*/
   .navbar-trans {
     background-color: transparent;
@@ -73,7 +81,6 @@ body{
   .navbar-doublerow.navbar-trans.afterscroll {
      top:-50px;
   }
-
   .flex-container {
       display: flex;
       justify-content: space-between;
@@ -84,6 +91,4 @@ body{
   .text-white,.text-white-hover:hover{/*color:#fff*/color:black!important}
   /*fontcolor*/
   .light-grey {color:#000!important;background-color:#E6E9ED!important}
-
-  color:black;
 }

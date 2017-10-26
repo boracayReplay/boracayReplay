@@ -4,13 +4,9 @@ import {Onair} from './onAir';
 import {Broaditems} from './broadItems';
 
 export class ContentsBody extends React.Component {
-  constructor(){
-    super();
-  }
-
   render(){
     return (
-        getContent(this.props.displayType)
+      getContent(this.props.displayType)
     );
   }
 }

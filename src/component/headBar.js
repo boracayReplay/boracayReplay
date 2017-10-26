@@ -59,7 +59,7 @@ export class HeadBar extends React.Component {
                   </button>
                   <ul className="dropdown-menu">
                       <NavItem onClick={ ()=> this.onClickButton("onair")}> 실시간 보기 </NavItem>
-                      <NavItem onClick={ ()=> this.onClickButton("false")}> 지난 방송 보기 </NavItem>
+                      <NavItem onClick={ ()=> this.onClickButton("broad")}> 지난 방송 보기 </NavItem>
                     <li role="separator" className="divider"></li>
                     <li><a href="#">contact us</a></li>
                   </ul>
