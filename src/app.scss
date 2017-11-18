@@ -2,13 +2,11 @@
 @import './bootstrap/customizations.scss';
 
 body{
-  color:black;
-  
   .navbar{
     background-color: white;
   }
-  #myhead{
-    margin:20% 5%;
+  #main{
+    margin:13% 5%;
   }
   a:link {
     text-decoration: none;
@@ -18,14 +16,12 @@ body{
     text-decoration: none;
     color: black;
   }
-
   /*scroll effect*/
   .navbar-trans {
     background-color: transparent;
     border: none;
     transition: top 1s ease;
   }
-
   /*double row*/
   .navbar-doublerow > .navbar{
   	display: block;
@@ -87,6 +83,15 @@ body{
   }
   .flex-item {
   }
+  .modal-dialog {
+    top:10%;
+    transform: translateY(-50%);
+  }
+  .broadcol{
+    height:380px;
+  }
+
+
   /*text*/
   .text-white,.text-white-hover:hover{/*color:#fff*/color:black!important}
   /*fontcolor*/

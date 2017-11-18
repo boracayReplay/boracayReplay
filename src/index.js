@@ -1,4 +1,3 @@
-
 import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
 import css from './app.scss';
@@ -39,5 +38,5 @@ class App extends React.Component {
 
 ReactDOM.render(
     <App/>,
-    document.getElementById('myhead')
+    document.getElementById('main')
 );

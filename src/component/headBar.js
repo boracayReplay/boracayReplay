@@ -5,11 +5,11 @@ import {ContentsBody} from './contentsBody'
 
 export class HeadBar extends React.Component {
   constructor(){
-    super()
+    super();
     this.state = {
       displayType:"onair"
     };
-    this.onClickButton = this.onClickButton.bind(this);
+    this._clickMenu = this._clickMenu.bind(this);
   }
 
   componentWillMount(){
@@ -17,9 +17,10 @@ export class HeadBar extends React.Component {
 
   componentdidMount(){
   }
-
-  onClickButton(clickedType){
-    this.setState({displayType:clickedType});
+    _clickMenu(menuType){
+    this.setState(
+        {displayType:menuType}
+    );
   }
 
   render(){
@@ -47,8 +48,8 @@ export class HeadBar extends React.Component {
                   <div className="navbar-brand" onClick={()=> window.location.reload()}>Boracay</div>
                 </div>
                 <Nav className="nav navbar-nav flex-item hidden-xs">
-                  <NavItem onClick={ ()=> this.onClickButton("onair")}> 실시간 보기 </NavItem>
-                  <NavItem onClick={ ()=> this.onClickButton("false")}> 지난 방송 보기 </NavItem>
+                  <NavItem onClick={ ()=> this._clickMenu("onair")}> 실시간 보기 </NavItem>
+                  <NavItem onClick={ ()=> this._clickMenu("false")}> 지난 방송 보기 </NavItem>
                 </Nav>
                 <ul className="nav navbar-nav flex-item hidden-xs pull-right">
                   <li><a href="#" className="">offer!</a></li>
@@ -58,8 +59,8 @@ export class HeadBar extends React.Component {
                     <span className="glyphicon glyphicon-align-justify"></span>
                   </button>
                   <ul className="dropdown-menu">
-                      <NavItem onClick={ ()=> this.onClickButton("onair")}> 실시간 보기 </NavItem>
-                      <NavItem onClick={ ()=> this.onClickButton("broad")}> 지난 방송 보기 </NavItem>
+                      <NavItem onClick={()=> this._clickMenu("onair")}> 실시간 보기 </NavItem>
+                      <NavItem onClick={()=> this._clickMenu("broad")}> 지난 방송 보기 </NavItem>
                     <li role="separator" className="divider"></li>
                     <li><a href="#">contact us</a></li>
                   </ul>
@@ -68,7 +69,6 @@ export class HeadBar extends React.Component {
             </div>
           </nav>
         </nav>
-
         <ContentsBody displayType={this.state.displayType}/>
       </div>
     );

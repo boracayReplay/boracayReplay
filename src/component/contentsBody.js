@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Onair} from './onAir';
+import {Onair} from './onair';
 import {Broaditems} from './broadItems';
 
 export class ContentsBody extends React.Component {
