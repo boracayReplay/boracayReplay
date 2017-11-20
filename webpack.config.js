@@ -2,38 +2,14 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const bootstrapEntryPoints = require("./webpack.bootstrap.config");
 const glob = require("glob");
 const PurifyCSSPlugin = require("purifycss-webpack");
 const isProd = process.env.NODE_ENV === 'production';
-const cssDev = ['style-loader','css-loader','sass-loader']
-const cssProd = ExtractTextPlugin.extract({
-    fallback: 'style-loader',
-    use: [
-        {
-            loader: 'css-loader',
-            options: {
-                sourceMap: true,
-                minimize: true,
-                discardComments: {
-                    removeAll: true
-                }
-            }
-        },
-        {
-            loader: 'sass-loader',
-            options: {
-                sourceMap: true
-            }
-        }]
-});
-const cssConfig = isProd ? cssProd : cssDev;
-const bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
 
 module.exports = {
   entry: {
     app: './src/index.js',
-    bootstrap: bootstrapConfig
+    bootstrap: 'bootstrap-loader'
   },
   output: {
     path: path.join(__dirname, 'public'),
@@ -41,9 +17,9 @@ module.exports = {
   },
   module:{
     rules:[
-      {
-        test: /\.scss$/,
-        use: cssConfig
+			{
+				test: /\.scss$/,
+				use: ["style-loader", "css-loader", "sass-loader"]
       },
       {
         test: /\.js$/,
