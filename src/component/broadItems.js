@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import _ from 'lodash';
 import {Grid, Row, Col, Thumbnail, Button, Modal} from 'react-bootstrap';
+import defaultImg from '../img/default_tv.png'
+
 
 export class Broaditems extends Component{
   constructor() {
     super();
 
-    this.pageSize = 10;
+    this.pageSize = 11;
     this.lastKey = null;
     this.lastCreatedDate = "";
 
@@ -21,21 +23,21 @@ export class Broaditems extends Component{
       }
     }
 
-    this._onclick = this._onclick.bind(this);
+    this._onClick = this._onClick.bind(this);
     this._openModal = this._openModal.bind(this);
     this._closeModal = this._closeModal.bind(this);
-    this._imageChange = this._imageChange.bind(this);
   }
   componentWillMount(){
   };
 
   componentDidMount(){
     window.addEventListener("wheel", _.throttle(this._wheel.bind(this), 500));
-    let items = firebase.database().ref('broad-items/enter').orderByChild('created_date').limitToFirst(10);
+    let items = firebase.database().ref('broad-items/enter').orderByChild('created_date').limitToFirst(this.pageSize);
     items.on('value',(snapshot) => {
     	const receivedItems = _.entries(snapshot.val());
     	this.lastKey = receivedItems[receivedItems.length-1][0];
-			this.lastCreatedDate = receivedItems[receivedItems.length-1][1]["created_date"];
+        this.lastCreatedDate = receivedItems[receivedItems.length-1][1]["created_date"];
+        receivedItems.pop();
 
         this.setState({
             items:_.concat(this.state.items, receivedItems)
@@ -61,13 +63,15 @@ export class Broaditems extends Component{
 			const receivedItems = _.entries(snapshot.val());
 			this.lastKey = receivedItems[receivedItems.length-1][0];
 			this.lastCreatedDate = receivedItems[receivedItems.length-1][1]["created_date"];
+            receivedItems.pop();
+
 			this.setState({
 				items:_.concat(this.state.items, receivedItems)
 			})
 		});
 	}
 
-    _onclick(index, smallBroadcast){
+    _onClick(index, smallBroadcast){
         this._openModal(index, smallBroadcast);
     }
 
@@ -76,6 +80,7 @@ export class Broaditems extends Component{
             modalOpened:true,
             modalData:smallBroadcast
         });
+        {console.log(this.state.modalData.thumb_image)}
     }
 
     _closeModal() {
@@ -83,10 +88,17 @@ export class Broaditems extends Component{
         console.log(this.state.modalData.links[0])
     }
 
-    _imageChange(){
+    _extractImgsrcFromThumbimage(thumbnail){
+        if (_.isNil(thumbnail)) {
+            return ''
+        }
+        if (thumbnail.match("ipinpro/img/blank")){
+          thumbnail = defaultImg
+        }
+        return thumbnail;
     }
 
-    extractDomainFromLink(link) {
+    _extractDomainFromLink(link) {
         if (_.isNil(link)) {
             return ''
         }
@@ -98,7 +110,7 @@ export class Broaditems extends Component{
     _extractMetaFromLinks(links) {
         let linksMap = new Map();
         links.map((l) => {
-            let linkDomain = this.extractDomainFromLink(l);
+            let linkDomain = this._extractDomainFromLink(l);
             if (linksMap.has(linkDomain)) {
                 linksMap.get(linkDomain).push(l)
             } else {
@@ -108,8 +120,6 @@ export class Broaditems extends Component{
         return Array.from(linksMap);
     }
 
-
-
   render(){
     return (
       <Grid>
@@ -118,9 +128,9 @@ export class Broaditems extends Component{
               this.state.items.map((smallBroadcast, i ) => {
                 return (
                     <Col className="broadcol" xs={10} md={3} key={i}>
-                        <Thumbnail alt="none" src={smallBroadcast[1].thumb_image}>
+                        <Thumbnail alt="none" src={this._extractImgsrcFromThumbimage(smallBroadcast[1].thumb_image)}>
                             <p>  {smallBroadcast[1].title} </p>
-                            <Button onClick={() => this._onclick(i, smallBroadcast[1])}> 바로 가기 </Button>
+                            <Button onClick={() => this._onClick(i, smallBroadcast[1])}> 바로 가기 </Button>
                         </Thumbnail>
                 </Col>);
             })}
@@ -130,18 +140,19 @@ export class Broaditems extends Component{
                   <Modal.Title>{this.state.modalData.title}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                  <Thumbnail alt="Done" src={this.state.modalData.thumb_image}> </Thumbnail>
+                  <Thumbnail alt="" src={this._extractImgsrcFromThumbimage(this.state.modalData.thumb_image)}> </Thumbnail>
                   <p>
                       {this._extractMetaFromLinks(this.state.modalData.links).map(linkDomain => {
                           return (
                               <div>
-                              <p>{linkDomain[0]}</p>
-                              <p>{linkDomain[1].map((link,index) => {
-                                  return (
-                                      <p><a href={link} target="__blank">   ( {index+1} 부 바로보기 !!! )</a></p>
-                                  );
-                              })}</p>
-                          </div>
+                                 <p>{linkDomain[0]}</p>
+                                 <p>{linkDomain[1].map((link,index) => {
+                                      return (
+                                          <p><a href={link} target="__blank">   ( {index+1} 부 바로보기 !!! )</a></p>
+                                      );
+                                  })}
+                                 </p>
+                             </div>
                           )
                       })}
                   </p>

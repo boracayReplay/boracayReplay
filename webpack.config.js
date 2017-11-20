@@ -5,13 +5,27 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const bootstrapEntryPoints = require("./webpack.bootstrap.config");
 const glob = require("glob");
 const PurifyCSSPlugin = require("purifycss-webpack");
-
 const isProd = process.env.NODE_ENV === 'production';
 const cssDev = ['style-loader','css-loader','sass-loader']
 const cssProd = ExtractTextPlugin.extract({
-    fallback:'style-loader',
-    use:['css-loader','sass-loader'],
-    publicPath:'public'
+    fallback: 'style-loader',
+    use: [
+        {
+            loader: 'css-loader',
+            options: {
+                sourceMap: true,
+                minimize: true,
+                discardComments: {
+                    removeAll: true
+                }
+            }
+        },
+        {
+            loader: 'sass-loader',
+            options: {
+                sourceMap: true
+            }
+        }]
 });
 const cssConfig = isProd ? cssProd : cssDev;
 const bootstrapConfig = isProd ? bootstrapEntryPoints.prod : bootstrapEntryPoints.dev;
@@ -27,26 +41,30 @@ module.exports = {
   },
   module:{
     rules:[
-          {
-            test: /\.scss$/,
-            use: cssConfig
-          },
-          {
-            test: /\.js$/,
-            exclude: /(node_modules|bower_components)/,
-            use: 'babel-loader'
-          },
-          //Bootstrap
-          {
-            test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000&name=fonts/[name].[ext]'
-          },
-          {
-            test: /\.(ttf|eot)$/, loader: 'file-loader?name=fonts/[name].[ext]'
-          },
-          {
-            test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports-loader?jQuery=jquery'
-          },
-    ]
+      {
+        test: /\.scss$/,
+        use: cssConfig
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000&name=fonts/[name].[ext]'
+      },
+      {
+        test: /\.(ttf|eot)$/, loader: 'file-loader?name=fonts/[name].[ext]'
+      },
+      {
+        test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports-loader?jQuery=jquery'
+
+      },
+      {
+          test: /\.(png|jpg|svg)$/, loader: "url-loader",
+      },
+
+      ]
   },
   devServer:{
     contentBase:path.join(__dirname,"public"),

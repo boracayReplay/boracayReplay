@@ -45,7 +45,7 @@ export class HeadBar extends React.Component {
             <div className="container">
               <div className="flex-container">
                 <div className="navbar-header flex-item">
-                  <div className="navbar-brand" onClick={()=> window.location.reload()}>Boracay</div>
+                  <div className="navbar-brand" onClick={()=> window.location.reload()} style={{cursor:"pointer"}} >Boracay</div>
                 </div>
                 <Nav className="nav navbar-nav flex-item hidden-xs">
                   <NavItem onClick={ ()=> this._clickMenu("onair")}> 실시간 보기 </NavItem>

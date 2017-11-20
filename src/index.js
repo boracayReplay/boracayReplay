@@ -1,9 +1,8 @@
 import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
-import css from './app.scss';
 import firebase from 'firebase';
 import {HeadBar} from './component/headBar'
-
+import './app.scss';
 const config = {
     apiKey: "AIzaSyALHtOYNaeVpKVYmi0VJR0OrQn85e81VY8",
     authDomain: "boracay-eddc8.firebaseapp.com",

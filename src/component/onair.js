@@ -107,7 +107,7 @@ export class Onair extends React.Component{
           {this.state.currentEducation.map((smallBroadcast, i ) => {
             return (
               <Col xs={5} md={3} key={i}>
-                <Thumbnail src="#" alt=" 200">
+                <Thumbnail src="#" alt="">
                   <h3 >{smallBroadcast.name}</h3>
                   <p>
                     <Button>  <a href={smallBroadcast.link} target="_blank"> 바로가기  </a> </Button>
@@ -121,7 +121,7 @@ export class Onair extends React.Component{
           {this.state.currentHomeshop.map((smallBroadcast, i ) => {
             return (
               <Col xs={5} md={3} key={i}>
-                <Thumbnail src="#" alt=" 200">
+                <Thumbnail src="#" alt="">
                   <h3 >{smallBroadcast.name}</h3>
                   <p>
                     <Button>  <a href={smallBroadcast.link} target="_blank"> 바로가기  </a> </Button>
@@ -135,7 +135,7 @@ export class Onair extends React.Component{
           {this.state.currenteNewseconomy.map((smallBroadcast, i ) => {
             return (
               <Col xs={5} md={3} key={i}>
-                <Thumbnail src="#" alt=" 200">
+                <Thumbnail src="#" alt="">
                   <h3 >{smallBroadcast.name}</h3>
                   <p>
                     <Button>  <a href={smallBroadcast.link} target="_blank"> 바로가기  </a> </Button>
@@ -149,7 +149,7 @@ export class Onair extends React.Component{
           {this.state.currentSynthese.map((smallBroadcast, i ) => {
             return (
               <Col xs={5} md={3} key={i}>
-                <Thumbnail src="#" alt=" 200">
+                <Thumbnail src="#" alt="">
                   <h3 >{smallBroadcast.name}</h3>
                   <p>
                     <Button>  <a href={smallBroadcast.link} target="_blank"> 바로가기  </a> </Button>
