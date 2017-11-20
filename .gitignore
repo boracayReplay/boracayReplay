@@ -44,3 +44,5 @@ public/bundle.js
 
 # Google Cloud API Key
 serviceAccount.json
+
+public
