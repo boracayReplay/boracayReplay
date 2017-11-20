@@ -1,7 +1,21 @@
 {
   "rules": {
+    "broad-items" : {
+      "enter" : {
+        
+        ".indexOn": ["broadcast_date","chapter","created_date",
+                     "links","tags","thumb_image","title","weekday"]
+      },
+			"drama" : {
+        
+        ".indexOn": ["broadcast_date","chapter","created_date",
+                     "links","tags","thumb_image","title","weekday"]
+      },
+    	".read": true,
+    	".write": true
+      
+    },
     ".read": "true",
     ".write": "true"
   }
 }
-
