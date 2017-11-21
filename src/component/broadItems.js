@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import _ from 'lodash';
 import {Grid, Row, Col, Thumbnail, Button, Modal} from 'react-bootstrap';
-import defaultImg from '../img/default_tv.png'
+import defaultImg from '../img/default.png'
 
 
 export class Broaditems extends Component{
@@ -80,12 +80,10 @@ export class Broaditems extends Component{
             modalOpened:true,
             modalData:smallBroadcast
         });
-        {console.log(this.state.modalData.thumb_image)}
     }
 
     _closeModal() {
         this.setState({modalOpened:false});
-        console.log(this.state.modalData.links[0])
     }
 
     _extractImgsrcFromThumbimage(thumbnail){
@@ -141,21 +139,21 @@ export class Broaditems extends Component{
               </Modal.Header>
               <Modal.Body>
                   <Thumbnail alt="" src={this._extractImgsrcFromThumbimage(this.state.modalData.thumb_image)}> </Thumbnail>
-                  <p>
-                      {this._extractMetaFromLinks(this.state.modalData.links).map(linkDomain => {
+                  <div>
+                      {this._extractMetaFromLinks(this.state.modalData.links).map((linkDomain, i) => {
                           return (
-                              <div>
+                              <div key={i}>
                                  <p>{linkDomain[0]}</p>
-                                 <p>{linkDomain[1].map((link,index) => {
+                                 <div>{linkDomain[1].map((link,i) => {
                                       return (
-                                          <p><a href={link} target="__blank">   ( {index+1} 부 바로보기 !!! )</a></p>
+                                          <p key={i}><a href={link} target="__blank"> ({i+1} 부 바로보기 !!!)</a></p>
                                       );
                                   })}
-                                 </p>
+                                 </div>
                              </div>
                           )
                       })}
-                  </p>
+                  </div>
               </Modal.Body>
               <Modal.Footer>
                   <Button onClick={this._closeModal}>닫기</Button>
