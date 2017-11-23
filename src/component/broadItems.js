@@ -125,7 +125,7 @@ export class Broaditems extends Component{
             {
               this.state.items.map((smallBroadcast, i ) => {
                 return (
-                    <Col className="broadcol" xs={10} md={3} key={i}>
+                    <Col className="broad-col" xs={10} md={3} key={i}>
                         <Thumbnail alt="none" src={this._extractImgsrcFromThumbimage(smallBroadcast[1].thumb_image)}>
                             <p>  {smallBroadcast[1].title} </p>
                             <Button onClick={() => this._onClick(i, smallBroadcast[1])}> 바로 가기 </Button>
@@ -143,10 +143,10 @@ export class Broaditems extends Component{
                       {this._extractMetaFromLinks(this.state.modalData.links).map((linkDomain, i) => {
                           return (
                               <div key={i}>
-                                 <p>{linkDomain[0]}</p>
+                                 <p className="broad-title" style={{cursor: "Default"}}>{linkDomain[0]}</p>
                                  <div>{linkDomain[1].map((link,i) => {
                                       return (
-                                          <p key={i}><a href={link} target="__blank"> ({i+1} 부 바로보기 !!!)</a></p>
+                                          <p className="broad-links" key={i}><a href={link} target="_blank"> {" "}바로 보러 가기 - {i+1}</a></p>
                                       );
                                   })}
                                  </div>
