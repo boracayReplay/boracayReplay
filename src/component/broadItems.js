@@ -1,5 +1,4 @@
 import React,{ Component } from 'react';
-import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import _ from 'lodash';
 import {Grid, Row, Col, Thumbnail, Button, Modal} from 'react-bootstrap';
@@ -127,7 +126,7 @@ export class Broaditems extends Component{
                 return (
                     <Col className="broad-col" xs={10} md={3} key={i}>
                         <Thumbnail alt="none" src={this._extractImgsrcFromThumbimage(smallBroadcast[1].thumb_image)}>
-                            <p>  {smallBroadcast[1].title} </p>
+                            <p className="broad-title">  {smallBroadcast[1].title} </p>
                             <Button onClick={() => this._onClick(i, smallBroadcast[1])}> 바로 가기 </Button>
                         </Thumbnail>
                 </Col>);
@@ -143,10 +142,10 @@ export class Broaditems extends Component{
                       {this._extractMetaFromLinks(this.state.modalData.links).map((linkDomain, i) => {
                           return (
                               <div key={i}>
-                                 <p className="broad-title" style={{cursor: "Default"}}>{linkDomain[0]}</p>
+                                 <div className="broad-modal-title" style={{cursor: "Default"}}>{linkDomain[0]}</div>
                                  <div>{linkDomain[1].map((link,i) => {
                                       return (
-                                          <p className="broad-links" key={i}><a href={link} target="_blank"> {" "}바로 보러 가기 - {i+1}</a></p>
+                                          <div className="broad-modal-links" key={i}><a href={link} target="_blank"> {" "}바로 보러 가기 - {i+1}</a></div>
                                       );
                                   })}
                                  </div>

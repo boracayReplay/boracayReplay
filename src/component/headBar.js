@@ -1,6 +1,6 @@
 import React,{ Component } from 'react';
 import ReactDOM from 'react-dom';
-import {Modal, Thumbnail, Navbar, Nav, NavItem, FormGroup, FormControl, Button} from 'react-bootstrap';
+import {Modal, Thumbnail, Navbar, Nav, NavItem, FormGroup, FormControl, Button, DropdownButton, MenuItem,NavDropdown} from 'react-bootstrap';
 import {ContentsBody} from './contentsBody';
 import warningImg from '../img/warning.png';
 
@@ -71,10 +71,15 @@ export class HeadBar extends React.Component {
                              style={{cursor: "pointer"}}>Boracay
                         </div>
                       </div>
-                      <Nav className="nav navbar-nav flex-item hidden-xs">
-                        <NavItem onClick={() => this._clickMenu("onair")}> 실시간 보기 </NavItem>
-                        <NavItem onClick={() => this._clickMenu("false")}> 지난 방송 보기 </NavItem>
-                      </Nav>
+                        <Nav className="nav navbar-nav flex-item hidden-xs">
+                            <NavItem onClick={() => this._clickMenu("onair")}> 실시간 보기 </NavItem>
+                            <NavDropdown eventKey="4" title="지난 방송 보기" id="nav-dropdown">
+                                <MenuItem onClick={() => this._clickMenu("broad")} eventKey="4.1"> 전체 </MenuItem>
+                                <MenuItem eventKey="4.2"> 예능 </MenuItem>
+                                <MenuItem eventKey="4.3"> 뉴스 </MenuItem>
+                                <MenuItem eventKey="4.4"> 영화 </MenuItem>
+                            </NavDropdown>
+                        </Nav>
                       <ul className="nav navbar-nav flex-item hidden-xs pull-right">
                         <li>
                             <Navbar.Collapse>
