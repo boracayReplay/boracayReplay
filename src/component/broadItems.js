@@ -1,9 +1,8 @@
 import React,{ Component } from 'react';
-import ReactDOM from 'react-dom';
 import firebase from 'firebase';
 import _ from 'lodash';
 import {Grid, Row, Col, Thumbnail, Button, Modal} from 'react-bootstrap';
-import defaultImg from '../img/default_tv.png'
+import defaultImg from '../img/default.png'
 
 
 export class Broaditems extends Component{
@@ -78,12 +77,10 @@ export class Broaditems extends Component{
             modalOpened:true,
             modalData:smallBroadcast
         });
-        {console.log(this.state.modalData.thumb_image)}
     }
 
     _closeModal() {
         this.setState({modalOpened:false});
-        console.log(this.state.modalData.links[0])
     }
 
     _extractImgsrcFromThumbimage(thumbnail){
@@ -125,9 +122,9 @@ export class Broaditems extends Component{
             {
               this.state.items.map((smallBroadcast, i ) => {
                 return (
-                    <Col className="broadcol" xs={10} md={3} key={i}>
+                    <Col className="broad-col" xs={10} md={3} key={i}>
                         <Thumbnail alt="none" src={this._extractImgsrcFromThumbimage(smallBroadcast[1].thumb_image)}>
-                            <p>  {smallBroadcast[1].title} </p>
+                            <p className="broad-title">  {smallBroadcast[1].title} </p>
                             <Button onClick={() => this._onClick(i, smallBroadcast[1])}> 바로 가기 </Button>
                         </Thumbnail>
                 </Col>);
@@ -139,21 +136,21 @@ export class Broaditems extends Component{
               </Modal.Header>
               <Modal.Body>
                   <Thumbnail alt="" src={this._extractImgsrcFromThumbimage(this.state.modalData.thumb_image)}> </Thumbnail>
-                  <p>
-                      {this._extractMetaFromLinks(this.state.modalData.links).map(linkDomain => {
+                  <div>
+                      {this._extractMetaFromLinks(this.state.modalData.links).map((linkDomain, i) => {
                           return (
-                              <div>
-                                 <p>{linkDomain[0]}</p>
-                                 <p>{linkDomain[1].map((link,index) => {
+                              <div key={i}>
+                                 <div className="broad-modal-title">{linkDomain[0]}</div>
+                                 <div>{linkDomain[1].map((link,i) => {
                                       return (
-                                          <p><a href={link} target="__blank">   ( {index+1} 부 바로보기 !!! )</a></p>
+                                          <div className="broad-modal-links" key={i}><a href={link} target="_blank"> {" "}바로 보러 가기 - {i+1}</a></div>
                                       );
                                   })}
-                                 </p>
+                                 </div>
                              </div>
                           )
                       })}
-                  </p>
+                  </div>
               </Modal.Body>
               <Modal.Footer>
                   <Button onClick={this._closeModal}>닫기</Button>
