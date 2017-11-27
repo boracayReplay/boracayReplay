@@ -31,18 +31,17 @@ export class Broaditems extends Component{
   };
 
   componentDidMount(){
-    window.addEventListener("wheel", _.throttle(this._wheel.bind(this), 500));
-    let items = firebase.database().ref('broad-items/enter').orderByChild('created_date').limitToFirst(this.pageSize);
-    items.on('value',(snapshot) => {
-    	const receivedItems = _.entries(snapshot.val());
-    	this.lastKey = receivedItems[receivedItems.length-1][0];
-        this.lastCreatedDate = receivedItems[receivedItems.length-1][1]["created_date"];
-        receivedItems.pop();
-
-        this.setState({
-            items:_.concat(this.state.items, receivedItems)
-        })
-    });
+    window.addEventListener("wheel", _.throttle(this._wheel.bind(this), 1000));
+    let items = firebase.database().ref('broad-items/enter').orderByChild('created_date').limitToLast(this.pageSize);
+		items.on('value',(snapshot) => {
+			const receivedItems = _.entries(snapshot.val());
+			const firstItem = receivedItems.shift();
+			this.lastKey = firstItem[0];
+			this.lastCreatedDate = firstItem[1]["created_date"];
+			this.setState({
+				items:_.concat(this.state.items, receivedItems)
+			})
+		});
   };
 
 	_wheel(event) {
@@ -56,15 +55,14 @@ export class Broaditems extends Component{
 
 		let items = firebase.database().ref('broad-items/enter')
 		.orderByChild('created_date')
-		.startAt(this.lastCreatedDate, this.lastKey)
-		.limitToFirst(this.pageSize);
+		.endAt(this.lastCreatedDate, this.lastKey)
+		.limitToLast(this.pageSize);
 
 		items.on('value',(snapshot) => {
 			const receivedItems = _.entries(snapshot.val());
-			this.lastKey = receivedItems[receivedItems.length-1][0];
-			this.lastCreatedDate = receivedItems[receivedItems.length-1][1]["created_date"];
-            receivedItems.pop();
-
+			const firstItem = receivedItems.shift();
+			this.lastKey = firstItem[0];
+			this.lastCreatedDate = firstItem[1]["created_date"];
 			this.setState({
 				items:_.concat(this.state.items, receivedItems)
 			})
