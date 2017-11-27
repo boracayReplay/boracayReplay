@@ -4,6 +4,10 @@ body{
   }
   #main{
     margin:13% 5%;
+    cursor:Default;
+  }
+  Button{
+    cursor:pointer;
   }
   a:link {
     text-decoration: none;
@@ -103,9 +107,8 @@ body{
   .broad-modal-links{
     padding:1%;
   }
-
   /*text*/
-  .text-white,.text-white-hover:hover{/*color:#fff*/color:black!important}
+  .text-white,.text-white-hover:hover{color:black!important}
   /*fontcolor*/
   .light-grey {color:#000!important;background-color:#E6E9ED!important}
 }

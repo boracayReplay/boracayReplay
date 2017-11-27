@@ -53,7 +53,7 @@ module.exports = {
   },
   plugins:[
     new HtmlWebpackPlugin({
-        title:'This is Webpage~!', //html title 변경
+        title:'방송 보라 카이 - 무료 실시간, 지난 방송 보기', //html title 변경
         minify:{ //html을 minify 시켜줌
           collapseWhitespace:true
         },

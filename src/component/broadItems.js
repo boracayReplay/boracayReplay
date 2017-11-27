@@ -142,7 +142,7 @@ export class Broaditems extends Component{
                       {this._extractMetaFromLinks(this.state.modalData.links).map((linkDomain, i) => {
                           return (
                               <div key={i}>
-                                 <div className="broad-modal-title" style={{cursor: "Default"}}>{linkDomain[0]}</div>
+                                 <div className="broad-modal-title">{linkDomain[0]}</div>
                                  <div>{linkDomain[1].map((link,i) => {
                                       return (
                                           <div className="broad-modal-links" key={i}><a href={link} target="_blank"> {" "}바로 보러 가기 - {i+1}</a></div>
