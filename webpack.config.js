@@ -5,6 +5,8 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const glob = require("glob");
 const PurifyCSSPlugin = require("purifycss-webpack");
 const isProd = process.env.NODE_ENV === 'production';
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+
 
 module.exports = {
   entry: {
@@ -52,7 +54,8 @@ module.exports = {
     openPage: ''
   },
   plugins:[
-    new HtmlWebpackPlugin({
+      new FaviconsWebpackPlugin('./src/img/favicon.png'),
+      new HtmlWebpackPlugin({
         title:'방송 보라 카이 - 무료 실시간, 지난 방송 보기', //html title 변경
         minify:{ //html을 minify 시켜줌
           collapseWhitespace:true

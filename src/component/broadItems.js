@@ -143,7 +143,7 @@ export class Broaditems extends Component{
                                  <div className="broad-modal-title">{linkDomain[0]}</div>
                                  <div>{linkDomain[1].map((link,i) => {
                                       return (
-                                          <div className="broad-modal-links" key={i}><a href={link} target="_blank"> {" "}바로 보러 가기 - {i+1}</a></div>
+                                          <div className="broad-modal-links" key={i}><a href={link} target="_blank"> {" "} 바로 가기 - {i+1}</a></div>
                                       );
                                   })}
                                  </div>
